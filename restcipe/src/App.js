@@ -8,6 +8,7 @@ import RecipeContainer from './containers/recipeContainer.js'
 
 const URL = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/classify'
 const API_KEY = process.env.REACT_APP_API_KEY
+
 class App extends Component {
   state = {
     recipes: [],
@@ -39,14 +40,21 @@ fetch(`http://api.yummly.com/v1/api/recipes?_app_id=5241297e&_app_key=${API_KEY}
 
  }
 
+ handleImageChange = () => {
+   if(this.state.searchTerm.includes('hamburger')) {return 'https://image.flaticon.com/icons/svg/1148/1148277.svg'}
+    else if (this.state.searchTerm.includes('pizza')) { return 'https://image.flaticon.com/icons/svg/1149/1149845.svg'}
+    else if (this.state.searchTerm.includes('pasta')) { return 'https://image.flaticon.com/icons/svg/135/135744.svg'}
+    else if (this.state.searchTerm.includes('taco')) { return 'https://image.flaticon.com/icons/svg/135/135590.svg'}
+      else {return 'https://image.flaticon.com/icons/svg/1135/1135479.svg'
+    }
+ }
+
   render() {
-    console.log(process.env)
-    console.log(this.state.recipeTile)
     return (
       <div>
         <Router>
           <React.Fragment>
-            <NavBar searchTerm={this.state.searchTerm} onChange={this.handleChange} renderDisplay={this.renderDisplay}/>
+            <NavBar handleImageChange={this.handleImageChange} searchTerm={this.state.searchTerm} onChange={this.handleChange} renderDisplay={this.renderDisplay}/>
             <Route exact path="/" render={Home} />
           </React.Fragment>
         </Router>

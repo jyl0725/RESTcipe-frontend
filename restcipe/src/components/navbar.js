@@ -10,14 +10,19 @@ class NavBar extends Component {
   render() {
     return (
       <div className="App">
-        <table className='titleBar'>
+        <table
+        style={{
+          background: '#54c57a',
+          width: '100%'
+        }} className='titleBar'>
           <tbody>
             <tr>
               <td>
                 <img
+                style={{paddingLeft: 15}}
                 alt='app_icon'
-                width='100'
-                src="https://raw.githubusercontent.com/themoviedbcontent/imgs/master/logo-tmdb.png" />
+                width='40'
+                src="https://image.flaticon.com/icons/svg/601/601939.svg" />
               </td>
               <td width='8'/>
               <td>
@@ -27,19 +32,28 @@ class NavBar extends Component {
           </tbody>
         </table>
 
-        <form onSubmit={this.handleSubmit}>
+        <form
+        style={{
+          paddingLeft:15
+        }}
+        onSubmit={this.handleSubmit}>
         <input type='text'
           onChange={this.props.onChange}
           value={this.props.searchTerm}
           style={{
-          fontSize: 20,
+          fontSize: 10,
           display: 'block',
-          width: '99%',
+          width: '30%',
           paddingTop: 8,
           paddingBottom: 8,
-          paddingLeft: 16
-        }} placeholder="Enter Search" />
-        <input type='submit'/>
+          paddingLeft: 16,
+
+
+        }} placeholder="Search A Recipe" />
+        <img width='35'
+        onClick={this.handleSubmit}
+        src={this.props.handleImageChange()} />
+
         </form>
 
       </div>
