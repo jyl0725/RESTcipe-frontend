@@ -2,7 +2,7 @@ import React from 'react'
 
 const RecipeTile = (props) => {
   return (
-    <div onClick={(event) => props.handleTileClick(event, props)}>{props.recipeName}</div>
+    <p className='recipeTile' onClick={(event) => props.handleTileClick(event, props)}>{props.recipeName}</p>
   )
 }
 export default RecipeTile

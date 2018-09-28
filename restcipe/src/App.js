@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/home'
 import NavBar from './components/navbar'
 import RecipeContainer from './containers/recipeContainer.js'
+import UserRecipeContainer from './containers/userRecipeContainer'
 
 
-const URL = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/classify'
+
 const API_KEY = process.env.REACT_APP_API_KEY
 
 class App extends Component {
@@ -56,9 +57,11 @@ fetch(`http://api.yummly.com/v1/api/recipes?_app_id=5241297e&_app_key=${API_KEY}
           <React.Fragment>
             <NavBar handleImageChange={this.handleImageChange} searchTerm={this.state.searchTerm} onChange={this.handleChange} renderDisplay={this.renderDisplay}/>
             <Route exact path="/" render={Home} />
+            
           </React.Fragment>
         </Router>
         <RecipeContainer handleTileClick={this.handleTileClick} recipes={this.state.recipes} recipeTile={this.state.recipeTile} />
+        <UserRecipeContainer />
       </div>
     );
   }

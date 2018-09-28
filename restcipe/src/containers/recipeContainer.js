@@ -8,11 +8,14 @@ class RecipeContainer extends React.Component {
     // console.log(this.props.recipes)
     return (
       <div>
-        {this.props.recipes.map(recipe => {
-          return <RecipeTile handleTileClick={this.props.handleTileClick} key={recipe.id} {...recipe} />
-        })}
-        <RecipeDisplay  recipeTile={this.props.recipeTile}/>
+      <div className='grid'>
+          {this.props.recipes.map(recipe => {
+            return <RecipeTile handleTileClick={this.props.handleTileClick} key={recipe.id} {...recipe} />
+          })}
       </div>
+      <RecipeDisplay  recipeTile={this.props.recipeTile}/>
+      </div>
+
     )
   }
 }
