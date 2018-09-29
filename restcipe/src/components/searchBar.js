@@ -5,7 +5,7 @@ class SearchBar extends React.Component {
     event.preventDefault()
     this.props.renderDisplay()
   }
-
+  
   render () {
     return (
       <form onSubmit={this.handleSubmit}>

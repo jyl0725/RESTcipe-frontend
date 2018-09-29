@@ -1,11 +1,12 @@
 import React from 'react'
 import AllUserRecipes from '../components/allUserRecipes'
 import UserRecipeDisplay from '../components/userRecipeDisplay'
+import { NavLink } from 'react-router-dom'
 
 class UserRecipeContainer extends React.Component {
   state = {
     recipes : [],
-    rep: {}
+    recipeDisplay: {}
   }
 
   handleDelete = (event, id) => {
@@ -14,7 +15,7 @@ class UserRecipeContainer extends React.Component {
       this.setState((prevState) => {
         return {
           recipes: prevState.recipes.filter(recipe => recipe.id !== id),
-          rep: ''
+          recipeDisplay: ''
         }
       })
     })
@@ -30,7 +31,7 @@ class UserRecipeContainer extends React.Component {
   handleUserRecipe = (event, props) =>{
     event.stopPropagation()
     const recipe = this.state.recipes.find(recipe => recipe.name === event.target.innerText)
-    this.setState({rep: recipe})
+    this.setState({recipeDisplay: recipe})
   }
 
   componentDidMount(){
@@ -42,9 +43,12 @@ class UserRecipeContainer extends React.Component {
   render() {
     return (
       <div>
+      <NavLink to='/cookbook/create'>
+        <button>Create A Recipe</button>
+      </NavLink>
       <h3>My Recipes</h3>
         {this.renderAllRecipesDisplay()}
-        <UserRecipeDisplay handleDelete={this.handleDelete} recipe={this.state.rep}/>
+        <UserRecipeDisplay handleDelete={this.handleDelete} recipe={this.state.recipeDisplay}/>
       </div>
     )
   }
