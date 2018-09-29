@@ -3,16 +3,16 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  componentDidMount(){
+    fetch('http://api.yummly.com/v1/api/recipes?_app_id=5241297e&_app_key=da685b63b4224d756256092ab4ec5b4e&q=onion+soup&requirePictures=true')
+    .then(res => res.json())
+    .then(recipes => console.log(recipes))
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
       </div>
     );
   }
