@@ -26,12 +26,12 @@ class UserRecipeContainer extends React.Component {
        return <AllUserRecipes key={recipe.id} {...recipe} handleUserRecipe={this.handleUserRecipe} />
     })
   }
+
   handleUserRecipe = (event, props) =>{
     event.stopPropagation()
     const recipe = this.state.recipes.find(recipe => recipe.name === event.target.innerText)
     this.setState({rep: recipe})
   }
-
 
   componentDidMount(){
     fetch('http://localhost:4000/api/v1/recipes')
@@ -49,5 +49,4 @@ class UserRecipeContainer extends React.Component {
     )
   }
 }
-
 export default UserRecipeContainer
