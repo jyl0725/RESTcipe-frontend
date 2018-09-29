@@ -8,7 +8,14 @@ class UserRecipeContainer extends React.Component {
   state = {
     recipes : [],
     recipeDisplay: {},
-    createdRecipe: {},
+    createdRecipe: {
+      recipeName: '',
+       recipeUrl: '',
+       ingredients: [],
+       time: 0,
+       servings: 0,
+       description: ''
+    },
     recipeName: '',
     recipeUrl: '',
     ingredients: '',
@@ -34,16 +41,28 @@ class UserRecipeContainer extends React.Component {
          servings: this.state.servings,
          description: this.state.description
       }
-    },this.setState({recipes: [...this.state.recipes, this.state.createRecipe]},
-      this.fetchPost())
+    },this.setState({recipes: [...this.state.recipes, this.state.createdRecipe]},
+      this.fetchPostIngredient())
     )
   }
 
-  fetchPost = () =>{
-      return this.state.createdRecipe.ingredients && this.state.createRecipe.ingredients.filter(ingred =>{
-      return !this.state.allIngredients.includes(ingred)
-    })
-  }
+  fetchPostIngredient = () =>{
+    const ingredientsName = this.state.allIngredients.map(ingred => ingred.name.toLowerCase())
+
+     this.state.createdRecipe.ingredients &&  this.state.createdRecipe.ingredients.filter(ingred =>{
+     !ingredientsName.includes(ingred.toLowerCase())})
+
+        this.state.createdRecipe.ingredients && this.state.createdRecipe.ingredients.forEach(ingred =>{
+      fetch('http://localhost:4000/api/v1/ingredients', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({'name': ingred, "recipes":[], "recipe_ingredients":[] })
+      });
+      })
+    }
 
   handleDelete = (event, id) => {
     fetch(`http://localhost:4000/api/v1/recipes/${id}`, { method: "DELETE" })
