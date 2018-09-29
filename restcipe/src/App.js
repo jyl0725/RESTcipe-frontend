@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from './components/home'
+import NavBar from './components/navbar'
+import RecipeContainer from './containers/recipeContainer.js'
+import UserRecipeContainer from './containers/userRecipeContainer'
+import CreateRecipe from './components/createRecipe'
 
 class App extends Component {
 
-  componentDidMount(){
-    fetch('http://api.yummly.com/v1/api/recipes?_app_id=5241297e&_app_key=da685b63b4224d756256092ab4ec5b4e&q=onion+soup&requirePictures=true')
-    .then(res => res.json())
-    .then(recipes => console.log(recipes))
-  }
+
   render() {
     return (
-      <div className="App">
 
-      </div>
+        <Router>
+          <React.Fragment>
+            <NavBar/>
+            <Route exact path="/" render={Home}/>
+            <Route exact path="/recipes" component={RecipeContainer}/>
+            <Route exact path="/cookbook" component={UserRecipeContainer}/>
+            <Route exact path="/cookbook/create" component={CreateRecipe}/>
+          </React.Fragment>
+        </Router>
+
     );
   }
 }
-
 export default App;
