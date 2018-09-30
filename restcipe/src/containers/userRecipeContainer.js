@@ -31,7 +31,7 @@ class UserRecipeContainer extends React.Component {
   }
 
   handleUserSubmit = (event) =>{
-    event.preventDefault()
+    event.preventDefault();
     this.setState({
       createdRecipe: {
         recipeName: this.state.recipeName,
@@ -40,27 +40,25 @@ class UserRecipeContainer extends React.Component {
          time: this.state.time,
          servings: this.state.servings,
          description: this.state.description
-      }
-    },this.setState({recipes: [...this.state.recipes, this.state.createdRecipe]},
-      this.fetchPostIngredient())
-    )
+       }
+     },this.fetchPostIngredient())
   }
+
+
 
   fetchPostIngredient = () =>{
     const ingredientsName = this.state.allIngredients.map(ingred => ingred.name.toLowerCase())
 
-     this.state.createdRecipe.ingredients &&  this.state.createdRecipe.ingredients.filter(ingred =>{
-     !ingredientsName.includes(ingred.toLowerCase())})
-
-        this.state.createdRecipe.ingredients && this.state.createdRecipe.ingredients.forEach(ingred =>{
+     return this.state.createdRecipe.ingredients.filter(ingred =>{
+     return !ingredientsName.includes(ingred.toLowerCase())}).forEach(ingred =>{
       fetch('http://localhost:4000/api/v1/ingredients', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({'name': ingred, "recipes":[], "recipe_ingredients":[] })
-      });
+        body: JSON.stringify({'name': `${ingred}`, "recipes":['grain','food']})})
+        // .then(this.set((prevState =>{})))
       })
     }
 
@@ -78,7 +76,7 @@ class UserRecipeContainer extends React.Component {
 
   renderAllRecipesDisplay = () => {
     return this.state.recipes.map(recipe => {
-       return <AllUserRecipes  {...recipe} handleUserRecipe={this.handleUserRecipe} />
+       return <AllUserRecipes  key={recipe.id}{...recipe} handleUserRecipe={this.handleUserRecipe} />
     })
   }
 
