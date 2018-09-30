@@ -10,11 +10,11 @@ class UserRecipeContainer extends React.Component {
     recipeDisplay: {},
     createdRecipe: {
       recipeName: '',
-       recipeUrl: '',
-       ingredients: [],
-       time: 0,
-       servings: 0,
-       description: ''
+      recipeUrl: '',
+      ingredients: [],
+      time: 0,
+      servings: 0,
+      description: ''
     },
     recipeName: '',
     recipeUrl: '',
@@ -41,26 +41,56 @@ class UserRecipeContainer extends React.Component {
          servings: this.state.servings,
          description: this.state.description
        }
-     },this.fetchPostIngredient())
+     }, () => {this.fetchPostIngredient()})
   }
 
 
 
   fetchPostIngredient = () =>{
     const ingredientsName = this.state.allIngredients.map(ingred => ingred.name.toLowerCase())
+    const newIngred = this.state.createdRecipe.ingredients.filter(ingred =>{
+    return !ingredientsName.includes(ingred.toLowerCase())})
 
-     return this.state.createdRecipe.ingredients.filter(ingred =>{
-     return !ingredientsName.includes(ingred.toLowerCase())}).forEach(ingred =>{
+     return newIngred.forEach(ingred =>{
       fetch('http://localhost:4000/api/v1/ingredients', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({'name': `${ingred}`, "recipes":['grain','food']})})
-        // .then(this.set((prevState =>{})))
+        body: JSON.stringify({'name': `${ingred}`})
       })
+      .then(() =>{
+        this.setState((prevState) =>{
+          return {
+            recipe: prevState.ingredients.concat(newIngred)
+          }
+        })
+      })
+      .then(() => this.fetchPostRecipe())
+    })
     }
+
+    fetchPostRecipe = () =>{
+
+      fetch('http://localhost:4000/api/v1/recipes', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({'name': this.state.createdRecipe.recipeName, 'cook_time': this.state.createdRecipe.time,
+        'servings': this.state.createdRecipe.servings, 'directions': this.state.createdRecipe.description, "img_url":this.state.createdRecipe.recipeUrl, "ingredients":{'id':3}
+      })
+    })
+    .then(() =>{
+      this.setState((prevState) =>{
+        return {
+          recipe: prevState.recipes.concat(this.state.createdRecipe)
+        }
+      })
+    })
+  }
 
   handleDelete = (event, id) => {
     fetch(`http://localhost:4000/api/v1/recipes/${id}`, { method: "DELETE" })
@@ -76,7 +106,7 @@ class UserRecipeContainer extends React.Component {
 
   renderAllRecipesDisplay = () => {
     return this.state.recipes.map(recipe => {
-       return <AllUserRecipes  key={recipe.id}{...recipe} handleUserRecipe={this.handleUserRecipe} />
+       return <AllUserRecipes  key={recipe.recipeName}{...recipe} handleUserRecipe={this.handleUserRecipe} />
     })
   }
 
