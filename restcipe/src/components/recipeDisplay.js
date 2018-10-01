@@ -1,6 +1,7 @@
 import React from 'react'
 
 const recipeDisplay = (props) => {
+  console.log(props)
   const ingredients = () => {
     return props.recipeTile.name && props.recipeTile.ingredientLines.map((ingredient, idx) =>  (<li key={idx}>{ingredient} </li>))}
   return (

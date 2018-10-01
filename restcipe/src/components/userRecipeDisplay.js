@@ -1,9 +1,9 @@
 import React from 'react'
 
 class UserRecipeDisplay extends React.Component {
+
   handleDelete = (event) => {
     this.props.handleDelete(event, this.props.recipe.id)
-    console.log(this.props)
   }
   render() {
     return (
