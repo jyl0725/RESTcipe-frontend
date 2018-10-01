@@ -6,15 +6,8 @@ class CreateRecipe extends React.Component {
     this.props.handleUserSubmit(event)
   }
 
-  // componentDidMount() {
-  //   fetch('http://localhost:4000/api/v1/ingredients')
-  //   .then(response => response.json())
-  //   .then(ingredientData => this.setState({ingredients: ingredientData}))
-  // }
-
   render() {
-
-    return(
+    return (
       <React.Fragment>
       <form onSubmit={this.handleSubmit}>
         <label>Recipe Name</label>
