@@ -2,7 +2,7 @@ import React from 'react'
 
 let Home = () => {
   return(
-    <div>
+    <div id='homepage'>
       RESTcipe Home Page
     </div>
   )

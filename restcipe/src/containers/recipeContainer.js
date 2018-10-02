@@ -47,7 +47,8 @@ class RecipeContainer extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className='containers'>
+
       <SearchBar
         renderDisplay={this.renderDisplay}
         handleImageChange={this.handleImageChange}
@@ -58,7 +59,8 @@ class RecipeContainer extends React.Component {
             return <RecipeTile handleTileClick={this.handleTileClick} key={recipe.id} {...recipe}/>})}
         </div>
         <RecipeDisplay recipeTile={this.state.recipeTile}/>
-      </React.Fragment>
+
+      </div>
 
     )
   }

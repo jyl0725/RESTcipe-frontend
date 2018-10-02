@@ -5,10 +5,10 @@ class SearchBar extends React.Component {
     event.preventDefault()
     this.props.renderDisplay()
   }
-  
+
   render () {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form id='search2' onSubmit={this.handleSubmit}>
       <input
         id='input-text'
         type='text'

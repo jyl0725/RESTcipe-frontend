@@ -8,7 +8,7 @@ class UserRecipeDisplay extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className='display'>
+        <div>
           {this.props.recipe.name && <h1>{this.props.recipe.name}</h1>}
           {this.props.recipe.name && <img src={this.props.recipe.img_url} width="360" height="240" alt='food-display'/>}
           {this.props.recipe.name && <h3>Ingredients: {this.props.recipe.ingredients.map(ingredient => ingredient.name)}</h3>}
