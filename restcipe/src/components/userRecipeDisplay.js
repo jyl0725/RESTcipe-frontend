@@ -12,9 +12,9 @@ class UserRecipeDisplay extends React.Component {
   render() {
     console.log(this.props)
     return (
-      <React.Fragment>
-        <div className='recipe-tile-display'>
-          {this.props.recipe.name && <h1>{this.props.recipe.name}</h1>}
+
+        <div id='recipe-tile-displays'>
+          {this.props.recipe.name && <h1 >{this.props.recipe.name}</h1>}
           {this.props.recipe.name && <img src={this.props.recipe.img_url} width="360" height="240" alt='food-display'/>}
           {this.props.recipe.name && <h3>Ingredients: {this.handleIngredient()}</h3>}
           {this.props.recipe.name && <p>Total Time: {this.props.recipe.cook_time} min</p>}
@@ -23,7 +23,7 @@ class UserRecipeDisplay extends React.Component {
           {this.props.recipe.name && <button>Edit this Recipe</button>}
           {this.props.recipe.name && <button onClick={this.handleDelete}>Delete this Recipe</button>}
         </div>
-      </React.Fragment>
+      
     )
   }
 }

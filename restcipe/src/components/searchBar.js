@@ -8,7 +8,7 @@ class SearchBar extends React.Component {
 
   render () {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form id='search-form' onSubmit={this.handleSubmit}>
       <div id='search-wrapper'>
       <input
         id='search-input'

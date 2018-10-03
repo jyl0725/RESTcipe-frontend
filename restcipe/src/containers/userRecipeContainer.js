@@ -335,10 +335,9 @@ class UserRecipeContainer extends React.Component {
 
   render() {
     return (
-      <div className='recipescontainer'>
-      <NavLink to='/cookbook/create'>
-      </NavLink>
-      <h3>My Recipes</h3>
+      <div id='userrecipescontainer'>
+      <img className='recipescontainerimg' src='https://images.unsplash.com/photo-1507248783228-90ad12a3e52c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6b4ee9a8658c15bfae522aba7246fa09&auto=format&fit=crop&w=1050&q=80'/>
+      <h3 className='linkdisplay'>My Recipes</h3>
         {this.renderAllRecipesDisplay()}
         <UserRecipeDisplay
           handleDelete={this.handleDelete}
