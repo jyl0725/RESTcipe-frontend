@@ -190,7 +190,7 @@ grid-row-start: 3;
 #alluserrecipes:hover {
   border-radius: 10px;
   box-shadow: -5px 10px #888888;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 0, 0, 0.3);
 }
 
 .linkdisplay{
@@ -221,5 +221,5 @@ grid-row-start: 3;
 }
 
 div.hidden {
-    
+
 }
