@@ -13,13 +13,12 @@ class CreateRecipe extends React.Component {
   // }
 
   render() {
-
     return(
       <React.Fragment>
       <form id='formsubmit' onSubmit={this.handleSubmit}>
         <label>Recipe Name</label>
         <input type='text' name='name' value={this.props.name} onChange={this.props.handleNewRecipe} />
-        <label>Provide an Image URL</label>
+        <label>Image URL</label>
         <input type='text' name='img_url' value={this.props.img_url} onChange={this.props.handleNewRecipe}/>
         <label>Add or Create Ingredients</label>
         <input type='text' name='ingredients' value={this.props.ingredients} onChange={this.props.handleNewRecipe}/>
@@ -29,7 +28,7 @@ class CreateRecipe extends React.Component {
         <input type='number' name='servings' value={this.props.servings} onChange={this.props.handleNewRecipe}/>
         <label>Description</label>
         <input type='text' name='directions' value={this.props.directions} onChange={this.props.handleNewRecipe}/>
-        <input type='submit' />
+        <input className='btn' type='submit' />
       </form>
       </React.Fragment>
     )

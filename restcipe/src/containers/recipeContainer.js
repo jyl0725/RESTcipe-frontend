@@ -49,8 +49,6 @@ class RecipeContainer extends React.Component {
     return (
       <div className='recipescontainer' >
       <img className='recipescontainerimg' src='https://images.unsplash.com/photo-1483137140003-ae073b395549?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1e392896fc645f9fc3797c9bb7dab4d3&auto=format&fit=crop&w=1050&q=80'/>
-
-
       <SearchBar
         renderDisplay={this.renderDisplay}
         handleImageChange={this.handleImageChange}
@@ -59,7 +57,8 @@ class RecipeContainer extends React.Component {
         <div className='mapped-recipes'>
           {this.state.recipes.map(recipe => {
             return <RecipeTile className='recipefont' handleTileClick={this.handleTileClick} key={recipe.id} {...recipe}/>})}
-        </div>
+
+            </div>
         <RecipeDisplay recipeTile={this.state.recipeTile}/>
 
       </div>

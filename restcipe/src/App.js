@@ -8,8 +8,6 @@ import UserRecipeContainer from './containers/userRecipeContainer'
 import CreateRecipe from './components/createRecipe'
 
 class App extends Component {
-
-
   render() {
     return (
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import AllUserRecipes from '../components/allUserRecipes'
 import UserRecipeDisplay from '../components/userRecipeDisplay'
-import { NavLink } from 'react-router-dom'
 import CreateRecipe from '../components/createRecipe'
 
 
@@ -94,6 +93,10 @@ class UserRecipeContainer extends React.Component {
 
 
   fetchPostRecipe = () =>{
+    console.log(this.state.cook_time)
+    console.log(this.state.servings)
+    console.log(this.state.directions)
+
     fetch('http://localhost:4000/api/v1/recipes', {
       method: 'POST',
       headers: {
@@ -104,9 +107,20 @@ class UserRecipeContainer extends React.Component {
       'servings': this.state.servings, 'directions': this.state.directions, "img_url":this.state.img_url})
     })
     .then(res => res.json())
-    .then(data => this.setState({recipes: [...this.state.recipes, data]}))
+    .then(data => this.setState({
+      recipes: [...this.state.recipes, data]}))
     .then(() =>{this.fetchPostIngredient()})
     .then(() => this.fetchPostRecipeIngredient())
+    .then(() => this.setState({
+      name: '',
+      img_url: '',
+      ingredients: '',
+      cook_time: 0,
+      servings: 0,
+      directions: ''
+    }))
+
+
   }
 
   fetchPostIngredient = () =>{
@@ -148,7 +162,7 @@ class UserRecipeContainer extends React.Component {
   }
 
   fetchPostOldRecipeIngredient = (data) => {
-    console.log(this.state.recipes[this.state.recipes.length - 1].id)
+
 
     fetch('http://localhost:4000/api/v1/recipe_ingredients', {
         method: 'POST',
@@ -337,18 +351,20 @@ class UserRecipeContainer extends React.Component {
     return (
       <div id='userrecipescontainer'>
       <img className='recipescontainerimg' src='https://images.unsplash.com/photo-1507248783228-90ad12a3e52c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6b4ee9a8658c15bfae522aba7246fa09&auto=format&fit=crop&w=1050&q=80'/>
-      <h3 className='linkdisplay'>My Recipes</h3>
-        {this.renderAllRecipesDisplay()}
+      <div className='mapped-recipes'>
+      {this.state.recipes.map(recipe => {
+         return <AllUserRecipes  key={recipe.id} {...recipe} handleUserRecipe={this.handleUserRecipe} />})}
+         </div>
         <UserRecipeDisplay
           handleDelete={this.handleDelete}
           recipe={this.state.recipeDisplay}/>
         <CreateRecipe
-          recipeName={this.state.name}
-          recipeUrl={this.state.img_url}
+          name={this.state.name}
+          img_url={this.state.img_url}
           ingredients={this.state.ingredients}
-          time={this.state.cook_time}
+          cook_time={this.state.cook_time}
           servings={this.state.servings}
-          description={this.state.directions}
+          directions={this.state.directions}
           handleNewRecipe={this.handleNewRecipe}
           handleUserSubmit={this.handleUserSubmit}/>
       </div>

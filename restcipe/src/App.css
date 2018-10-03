@@ -101,12 +101,17 @@ grid-row-start: 3;
   grid-row-end: 12;
   grid-column-start: 5;
   grid-column-end: 8;
+  background-color: white;
+  border: 5px solid black;
+  border-radius: 10px;
+  box-shadow: -10px 10px #888888;
+
 
 }
 
 #search-form {
   grid-row-start: 1;
-  grid-column-start: 5;
+  grid-column-start: 4;
   grid-column-end: 8;
 }
 
@@ -127,6 +132,7 @@ grid-row-start: 3;
 }
 
 .mapped-recipes {
+
   background-color: rgba(255, 0, 0, .1);
   padding: 5px;
   grid-column-start: 1;
@@ -143,6 +149,8 @@ grid-row-start: 3;
 }
 
 .recipeTile:hover {
+  border-radius: 10px;
+  box-shadow: -5px 10px #888888;
   background-color: rgba(255, 0, 0, 0.3);
 }
 
@@ -157,11 +165,12 @@ grid-row-start: 3;
   height: 100vh;
 }
 
-#recipe-tile-displays {
+.recipe-tile-display {
   grid-column-start: 4;
   grid-column-end: 8;
   grid-row-start: 2;
   grid-row-end: 12;
+  background-color: rgba(255, 217, 179, .4);
 }
 
 #formsubmit {
@@ -169,17 +178,48 @@ grid-row-start: 3;
 }
 
 #alluserrecipes {
-  grid-column-start: 10;
+  grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 12;
-  background-color: rgba(255, 0, 0, 0.0);
+  font-family: 'Shadows Into Light', cursive;
+  padding: 7px;
+  font-size: 14pt;
+}
+
+#alluserrecipes:hover {
+  border-radius: 10px;
+  box-shadow: -5px 10px #888888;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .linkdisplay{
+  grid-template-columns: repeat(10, 10%);
+  grid-template-rows: repeat(10, 10%);
+  height: 100vh;
+  width: 100vw;
+  display: grid;
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start:1;
   grid-row-end: 2;
   background-color: rgba(255, 0, 0, 0.0);
+}
+
+.fooddisplay {
+  border-radius: 4px;
+}
+
+#formsubmit {
+  border: black solid 5px;
+  grid-column-start: 9;
+  grid-column-end: 11;
+  grid-row-start: 2;
+  grid-row-end: 6;
+  border-radius: 10px;
+  background-color: rgba(255, 217, 179, 0.4);
+}
+
+div.hidden {
+    
 }
