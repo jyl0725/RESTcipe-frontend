@@ -13,7 +13,7 @@ class UserRecipeDisplay extends React.Component {
     console.log(this.props)
     return (
       <React.Fragment>
-        <div className='display'>
+        <div className='recipe-tile-display'>
           {this.props.recipe.name && <h1>{this.props.recipe.name}</h1>}
           {this.props.recipe.name && <img src={this.props.recipe.img_url} width="360" height="240" alt='food-display'/>}
           {this.props.recipe.name && <h3>Ingredients: {this.handleIngredient()}</h3>}

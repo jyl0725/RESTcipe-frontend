@@ -9,7 +9,7 @@ class NavBar extends Component {
         <NavLink to="/" id='borderIcon'>
           <img src="https://image.flaticon.com/icons/svg/601/601939.svg" alt='app_icon'/>
         </NavLink>
-        <h3 id='navbartitle'>RESTcipe</h3>
+        <div id='navbartitle'>RESTcipe</div>
         <NavLink id='reclinks' to="/recipes">Recipe Lookup</NavLink>
         <NavLink id='cooklinks' to="/cookbook">My CookBook</NavLink>
       </div>

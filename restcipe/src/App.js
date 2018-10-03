@@ -17,9 +17,7 @@ class App extends Component {
           <React.Fragment>
             <NavBar />
             <Route exact path="/" render={Home}/>
-            <div id='recipescontainer'>
             <Route exact path="/recipes" component={RecipeContainer}/>
-            </div>
             <Route exact path="/cookbook" component={UserRecipeContainer}/>
             <Route exact path="/cookbook/create" component={CreateRecipe}/>
           </React.Fragment>

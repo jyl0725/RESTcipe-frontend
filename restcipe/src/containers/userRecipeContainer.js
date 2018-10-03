@@ -335,9 +335,8 @@ class UserRecipeContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='recipescontainer'>
       <NavLink to='/cookbook/create'>
-        <button>Create A Recipe</button>
       </NavLink>
       <h3>My Recipes</h3>
         {this.renderAllRecipesDisplay()}

@@ -8,9 +8,10 @@ class SearchBar extends React.Component {
 
   render () {
     return (
-      <form id='search2' onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
+      <div id='search-wrapper'>
       <input
-        id='input-text'
+        id='search-input'
         type='text'
         onChange={this.props.onChange}
         value={this.props.searchTerm}
@@ -21,6 +22,7 @@ class SearchBar extends React.Component {
       id='search-pic'
       onClick={this.handleSubmit}
       src={this.props.handleImageChange()}/>
+      </div>
       </form>
     )
   }

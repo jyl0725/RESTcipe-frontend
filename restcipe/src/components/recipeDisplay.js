@@ -4,7 +4,7 @@ const recipeDisplay = (props) => {
   const ingredients = () => {
     return props.recipeTile.name && props.recipeTile.ingredientLines.map((ingredient, idx) =>  (<li key={idx}>{ingredient} </li>))}
   return (
-    <div className='display'>
+    <div className='recipe-tile-display'>
       {props.recipeTile.name && <h1>{props.recipeTile.name}</h1>}
       {props.recipeTile.name && <img src={props.recipeTile.images[0].hostedLargeUrl} width="360" height="240" alt='recipe-display'/>}
       <ul>

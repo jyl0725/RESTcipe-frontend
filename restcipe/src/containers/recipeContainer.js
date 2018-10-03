@@ -47,14 +47,14 @@ class RecipeContainer extends React.Component {
 
   render() {
     return (
-      <div className='containers'>
+      <div >
 
       <SearchBar
         renderDisplay={this.renderDisplay}
         handleImageChange={this.handleImageChange}
         onChange={this.handleChange}
         searchTerm={this.props.searchTerm}/>
-        <div className='grid'>
+        <div className='recipescontainer'>
           {this.state.recipes.map(recipe => {
             return <RecipeTile handleTileClick={this.handleTileClick} key={recipe.id} {...recipe}/>})}
         </div>
