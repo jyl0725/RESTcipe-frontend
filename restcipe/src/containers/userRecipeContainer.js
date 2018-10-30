@@ -25,72 +25,9 @@ class UserRecipeContainer extends React.Component {
 
   handleUserSubmit = (event) =>{
     event.preventDefault();
-    // this.fetchPostRecipe().then(this.fetchPostIngredient()).then(this.fetchPostRecipeIngredient())
     this.fetchPostRecipe()
 
-    // this.fetchAllRequest();
   }
-
-  // async handleUserSubmit(event){
-  //   event.preventDefault();
-  //   const recipe = await fetchPostRecipe();
-  //   const ingredients = await fetchPostIngredient();
-  //   const recipeIngredient = await fetchPostRecipeIngredient();
-  //
-  // }
-  //
-  // fetchAllRequest = () =>{
-  //   fetch('http://localhost:4000/api/v1/recipes', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({'name': this.state.name, 'cook_time': this.state.cook_time,
-  //     'servings': this.state.servings, 'directions': this.state.directions, "img_url":this.state.img_url})
-  //   })
-  //   .then(res => res.json())
-  //   .then(data => this.setState({recipes: [...this.state.recipes, data]}))
-  //   .then(() =>{
-  //     const ingredientsName = this.state.allIngredients.map(ingred => ingred.name.toLowerCase())
-  //     const newIngred = this.state.ingredients.split(" ").filter(ingred =>{
-  //       return !ingredientsName.includes(ingred.toLowerCase())
-  //     })
-  //     debugger
-  //     newIngred.forEach(ingred =>{
-  //       fetch('http://localhost:4000/api/v1/ingredients', {
-  //         method: 'POST',
-  //         headers: {
-  //           'Accept': 'application/json',
-  //           'Content-Type': 'application/json'
-  //         },
-  //         body: JSON.stringify({'name': `${ingred}`})
-  //       })
-  //       .then(res => res.json())
-  //       .then(data => this.setState({allIngredients: [...this.state.allIngredients, data]}))
-  //       // , this.fetchPostRecipeIngredient(data)
-  //     })
-  //       debugger
-  //   })
-  //   .then(() =>{
-  //     const recIngre = this.state.ingredients.split(" ")
-  //     const needPostRecIng = this.state.allIngredients.filter(ingred => recIngre.includes(ingred.name))
-  //       debugger
-  //     needPostRecIng.forEach(ing =>{
-  //       fetch('http://localhost:4000/api/v1/recipe_ingredients', {
-  //         method: 'POST',
-  //         headers: {
-  //           'Accept': 'application/json',
-  //           'Content-Type': 'application/json'
-  //         },
-  //         body: JSON.stringify({"recipe_id": this.state.recipes[this.state.recipes.length - 1].id, "ingredient_id": ing.id})
-  //       })
-  //       .then(res => res.json())
-  //       .then(ri => this.state.recipes[this.state.recipes.length - 1].ingredients.concat([ri]))
-  //     })
-  //   })
-  // }
-
 
   fetchPostRecipe = () =>{
     console.log(this.state.cook_time)
@@ -128,22 +65,6 @@ class UserRecipeContainer extends React.Component {
     const newIngred = this.state.ingredients.split(" ").filter(ingred =>{
       return !ingredientsName.includes(ingred.toLowerCase())
     })
-    // const IngredWithId = this.state.ingredients.split(" ").filter(ingred =>{
-    //   return ingredientsName.includes(ingred.toLowerCase())
-    // })
-
-    // IngredWithId.forEach(ingred =>{
-    //   fetch('http://localhost:4000/api/v1/recipe_ingredients', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Accept': 'application/json',
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({"recipe_id": this.state.recipes[this.state.recipes.length - 1].id, "ingredient_id": ingred.id})
-    //   })
-    //   .then(res => res.json())
-    //   .then(data => this.setState({allIngredients: [...this.state.allIngredients, data]}))
-    // })
 
     newIngred.forEach(ingred =>{
       fetch('http://localhost:4000/api/v1/ingredients', {
@@ -156,8 +77,6 @@ class UserRecipeContainer extends React.Component {
       })
       .then(res => res.json())
       .then(data => this.setState({allIngredients: [...this.state.allIngredients, data]},this.fetchPostOldRecipeIngredient(data)))
-      // , this.fetchPostRecipeIngredient(data)
-
     })
   }
 
@@ -181,20 +100,7 @@ class UserRecipeContainer extends React.Component {
       } )
     }
 
-  // this.state.recipes[this.state.recipes.length - 1].ingredients.concat([ri])
-
-  // fetchPost = async () => {
-  //   await this.fetchPostIngredient()
-  //
-  //   await this.fetchPostRecipe()
-  //
-  //   await this.fetchPostRecipeIngredient()
-  //
-  // }
-
   fetchPostRecipeIngredient = () => {
-    //
-    // const ingredientsName = this.state.allIngredients.map(ingred => ingred.name.toLowerCase())
     const recIngre = this.state.ingredients.split(" ")
     const needPostRecIng = this.state.allIngredients.filter(ingred => recIngre.includes(ingred.name))
 
@@ -217,101 +123,6 @@ class UserRecipeContainer extends React.Component {
 
     })
   }
-
-
-      // fetch('http://localhost:4000/api/v1/recipe_ingredients', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Accept': 'application/json',
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify({"recipe_id": this.state.recipes[this.state.recipes.length - 1].id, "ingredient_id": data.id})
-      // })
-      // .then(res => res.json())
-      // .then(recIng => {
-      //   console.log(this.state.recipes[this.state.recipes.length - 1].ingredients.concat(recIng))
-      // })
-
-    // let recipeIngredient = this.state.ingredients.split(" ")
-    // const repIngredWithId = this.state.allIngredients.filter(ingred => recipeIngredient.includes(ingred.name.toLowerCase()))
-    //
-    // repIngredWithId.forEach(ingred =>{
-    //   fetch('http://localhost:4000/api/v1/recipe_ingredients', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Accept': 'application/json',
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({"recipe_id": this.state.recipes[this.state.recipes.length - 1].id, "ingredient_id": ingred.id})
-    //   })
-    // })
-
-
-  //
-  //
-  // fetchPostIngredient = () =>{
-  //   const ingredientsName = this.state.allIngredients.map(ingred => ingred.name.toLowerCase())
-  //   const newIngred = this.state.createdRecipe.ingredients.filter(ingred =>{
-  //   return !ingredientsName.includes(ingred.toLowerCase())})
-  //
-  //     newIngred.forEach(ingred =>{
-  //     fetch('http://localhost:4000/api/v1/ingredients', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({'name': `${ingred}`})
-  //     })
-  //     .then(() =>{
-  //       fetch('http://localhost:4000/api/v1/ingredients')
-  //       .then(response => response.json())
-  //       .then(data => this.setState({allIngredients: data}))
-  //       .then(() => this.fetchPostRecipeIngredient())
-  //     })
-  //   })
-  //   }
-  //
-  //
-  //   fetchPostRecipe = () =>{
-  //
-  //     fetch('http://localhost:4000/api/v1/recipes', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({'name': this.state.createdRecipe.name, 'cook_time': this.state.createdRecipe.time,
-  //       'servings': this.state.createdRecipe.servings, 'directions': this.state.createdRecipe.directions, "img_url":this.state.createdRecipe.img_url
-  //     })
-  //   })
-  //   .then(() =>{
-  //     fetch('http://localhost:4000/api/v1/recipes')
-  //     .then(response => response.json())
-  //     .then(data => this.setState({recipes: data}))
-  //   })
-  //   .then(() => this.fetchPostIngredient())
-  // }
-  //
-  // fetchPostRecipeIngredient = () =>{
-  //
-  //   const recipeIngred =  this.state.allIngredients.filter(ingred => {return this.state.createdRecipe.ingredients.includes(ingred.name.toLowerCase())})
-  //   // debugger
-  //   recipeIngred.forEach( ingred => {
-  //     fetch('http://localhost:4000/api/v1/recipe_ingredients', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({"recipe_id": this.state.recipes[this.state.recipes.length - 1].id, "ingredient_id": ingred.id})
-  //     })
-  //   })
-  //
-  //     fetch('http://localhost:4000/api/v1/recipes')
-  //     .then(response => response.json())
-  //     .then(data => this.setState({recipes: data}))
-  // }
 
   handleDelete = (event, id) => {
     fetch(`http://localhost:4000/api/v1/recipes/${id}`, { method: "DELETE" })
