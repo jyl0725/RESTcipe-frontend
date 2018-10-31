@@ -19,7 +19,6 @@ class UserRecipeDisplay extends React.Component {
           {this.props.recipe.name && <p>Total Time: {this.props.recipe.cook_time} min</p>}
           {this.props.recipe.name && <p>Servings: {this.props.recipe.servings}</p>}
           {this.props.recipe.name && <p>Description: {this.props.recipe.directions}</p>}
-          {this.props.recipe.name && <button>Edit this Recipe</button>}
           {this.props.recipe.name && <button onClick={this.handleDelete}>Delete this Recipe</button>}
         </div>
 

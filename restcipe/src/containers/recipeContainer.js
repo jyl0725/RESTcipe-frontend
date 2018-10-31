@@ -2,7 +2,7 @@ import React from 'react'
 import RecipeTile from '../components/recipetile'
 import RecipeDisplay from '../components/recipeDisplay'
 import SearchBar from '../components/searchBar'
-const API_KEY = process.env.REACT_APP_API_KEY
+const API_KEY = 'da685b63b4224d756256092ab4ec5b4e'
 
 class RecipeContainer extends React.Component {
   state = {
